@@ -1,0 +1,60 @@
+/* Variable of color */
+:root {
+	--background-color: #082032;
+	--text-color-before: #082032;
+	--text-color-after: #d2d2d2;
+	--stroke-color: #2c394b;
+	--line-color: #d2d2d2;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	background: var(--background-color);
+}
+
+h2 {
+	/* Use transform:scale to resize the text */
+	transform: scale(0.8);
+	position: relative;
+	font-size: 14vw;
+	color: var(--text-color-before);
+	-webkit-text-stroke: 0.3vw var(--stroke-color);
+	text-transform: uppercase;
+}
+
+h2::before {
+	content: attr(data-text);
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 100%;
+	color: var(--text-color-after);
+	-webkit-text-stroke: 0vw var(--stroke-color);
+	border-right: 2px solid var(--line-color);
+	overflow: hidden;
+	animation: animate 3s linear infinite;
+	white-space: nowrap;
+}
+
+@keyframes animate {
+	0%,
+	10%,
+	100% {
+		width: 0%;
+	}
+	70%,
+	90% {
+		width: 100%;
+	}
+}
